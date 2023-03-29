@@ -45,6 +45,22 @@ The first 4 attributes are considered quantitative variables, whereas the last o
 
 ### Importing the data
 
+The ``` csv_url ``` is a varible that store the Iris Data set available from the [UC Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Iris) in csv format. Here, ``` pandas ``` has been used to import the data set.
+
+```
+iris = pd.read_csv(csv_url, names = attribute_names)
+```
+The above line of code is used to read a CSV file containing the Iris flower dataset and store it in a pandas DataFrame object called ```iris ```. The ```pandas``` library makes it simple to import tabular data into a DataFrame[^5] object. By reading data into a DataFrame with the ```pandas ``` library, we can rapidly conduct data analysis and manipulation using the pandas library's extensive set of functions and methods.
+Since the csv file at the UCI Machine Learning Repository does not include the variable attributes information in the same file, the ``` name = ``` parameter is used to list the attribute's names. 
+To understand better how DataFrame looks like, the ```.head()``` parameter can be used: 
+
+![Alt text](C:/Users/fratr/Desktop/progetto_pands/head.png)
+
+as per above image, the Data have 5 colums: [0] is the idex number, [1:4] are the quantitative variables, [5] is the class variable. While the ```.head()``` parameter shows oly the first 5 rows, if we want to see the data starting from the bottom, the ```.tail()``` parameter needs to be used:
+
+![Alt text](C:/Users/fratr/Desktop/progetto_pands/tail.png)
+
+
 
 
 ### References
@@ -52,3 +68,4 @@ The first 4 attributes are considered quantitative variables, whereas the last o
 [^2]: http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html
 [^3]: [angela1c.com](https://www.angela1c.com/projects/iris_project/the-iris-dataset/) - About Fisher’s Iris dataset
 [^4]:[rstudio-pubs-static.s3](https://rstudio-pubs-static.s3.amazonaws.com/568691_afb34f2ab2ad4734b63064a2dcf25931.html#Data%20Dimension)
+[^5]: In Python, a DataFrame object is a two-dimensional table-like data format supplied by the pandas module. It is made up of rows and columns, with each column containing various types of data (e.g., number, float, string), and each row representing a record or observation - [geeksforgeeks](https://www.geeksforgeeks.org/python-pandas-dataframe/).
