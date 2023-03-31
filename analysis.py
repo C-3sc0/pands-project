@@ -9,7 +9,12 @@ attribute_names = ['Sepal_Length (cm)','Sepal_Width (cm)','Petal_Length (cm)','P
 
 iris = pd.read_csv(csv_url, names = attribute_names)
 
-print (iris)
+#Look to the statistical data of the iris Data Set 
+print(iris.describe())
+
+# Using the value_counts() method on the 'Class' column to show how many different class Iris flower can be found in the Data Set.
+print(iris["Class"].value_counts())
+
 
 
 
