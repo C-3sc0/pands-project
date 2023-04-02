@@ -11,8 +11,8 @@ This repository is used for the final project given during the Programming and s
   * [Fisher's Iris Data set file](https://github.com/C-3sc0/pands-project#fishers-iris-data-set-file)
   * [Data Dimension](https://github.com/C-3sc0/pands-project#data-dimension)
   * [Importing the data](https://github.com/C-3sc0/pands-project#importing-the-data)
-  * [Iris Data Insight Extraction](https://github.com/C-3sc0/pands-project#/Iris-Data-Insight-Extraction)
-* [Iris Data Visualization](https://github.com/C-3sc0/pands-project#/Iris-Data-Visualization)
+  * [Iris Data Insight Extraction](https://github.com/C-3sc0/pands-project#iris-data-insight-extraction)
+* [Iris Data Visualization](https://github.com/C-3sc0/pands-project#iris-data-visualization)
 
 * [References](https://github.com/C-3sc0/pands-project#references)
 
@@ -155,21 +155,21 @@ None
 
 As per above output, we can immediately see that the Data Set has 150 rows and 5 columns. It also tells us the number of non-null values in each column, the dtype of each column and the memory usage of the Data Set. 
 
-Common mathematical and statistical methods are available for pandas objects. These methods typically generate a single value, such as the mean, maximum, or standard deviation. To obtain multiple summary statistics at once, the describe() method can be used[^10]:
+Common mathematical and statistical methods are available for pandas objects. These methods typically generate a single value, such as count[^10], mean[^11], standard deviation[^12], minimum[^13], percentiles[^14](25%, 50%, 75%), maximum[^15]. To obtain multiple summary statistics at once, the describe() method can be used[^16]:
 
 ```print(f"Statistical summary of the dataset: \n{iris.describe()}")```
 
 ```
 Statistical summary of the dataset: 
           Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)
-count[^11]         150.000000        150.000000         150.000000        150.000000
-mean[^12]            5.843333          3.054000           3.758667          1.198667
-std[^13]             0.828066          0.433594           1.764420          0.763161
-min[^14]             4.300000          2.000000           1.000000          0.100000
-25%[^15]            5.100000          2.800000           1.600000          0.300000
+count         150.000000        150.000000         150.000000        150.000000
+mean            5.843333          3.054000           3.758667          1.198667
+std             0.828066          0.433594           1.764420          0.763161
+min             4.300000          2.000000           1.000000          0.100000
+25%            5.100000          2.800000           1.600000          0.300000
 50%                 5.800000          3.000000           4.350000          1.300000
 75%                 6.400000          3.300000           5.100000          1.800000
-max[^16]            7.900000          4.400000           6.900000          2.500000
+max            7.900000          4.400000           6.900000          2.500000
 ```
 
 Summary statistics for the iris Data Set:
@@ -201,10 +201,10 @@ Summary statistics for the iris Data Set:
 [^7]: [StackOverflow](https://stackoverflow.com/questions/65949568/what-does-rangey-shape1-mean-in-for-i-in-rangedataset2-shape1#:~:text=shape%5B0%5D%20will%20give%20you,columns%20present%20in%20the%20dataFrame.)
 [^8]: [note.nkmk](https://note.nkmk.me/en/python-pandas-nan-judge-count/)
 [^9]: [geeksforgeeks](https://www.geeksforgeeks.org/python-pandas-dataframe-info/)
-[^10]:[W3schools](https://www.w3schools.com/python/pandas/ref_df_describe.asp)
-[^11]: The number of non-empty values in the Data Set
-[^12]: It shows the mean or average values of the coumn
-[^13]: It shows the Standard Deviation of the column 
-[^14]: It shows the smallest value observed in the Data Set for each variable.
-[^15]: It shows the percentage of values falling below that percentile. the first quartile is the value below which 25% of the data fall; the median is the value below whichc 50% of the data fall & the third quartile is the value below which 75% of the data fall.
-[^16]: It shows the Largest value observed in the Data Set for each variable. 
+[^10]: The number of non-empty values in the Data Set
+[^11]: It shows the mean or average values of the coumn
+[^12]: It shows the Standard Deviation of the column 
+[^13]: It shows the smallest value observed in the Data Set for each variable.
+[^14]: It shows the percentage of values falling below that percentile. the first quartile is the value below which 25% of the data fall; the median is the value below whichc 50% of the data fall & the third quartile is the value below which 75% of the data fall.
+[^15]: It shows the Largest value observed in the Data Set for each variable. 
+[^16]:[W3schools](https://www.w3schools.com/python/pandas/ref_df_describe.asp)
