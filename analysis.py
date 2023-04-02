@@ -13,6 +13,9 @@ iris = pd.read_csv(csv_url, names = attribute_names)
 # Display the statistical summary of the dataset using the describe() method 
 print(f"Statistical summary of the dataset: \n{iris.describe()}")
 
+# Display the index of the Iris Data Set
+print(f" The index of the Data Set is: ", iris.index)
+
 # Using the value_counts() method on the 'Class' column to show how many different class Iris flower can be found in the Data Set.
 print("The Iris plant are: \n")
 print(iris["Class"].value_counts())
