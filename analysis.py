@@ -1,6 +1,9 @@
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 
 # read in the dataset from the UCI Machine Learning Repository link
@@ -32,6 +35,11 @@ print(f"the number of missing value in the Data set is: \n{iris.isnull().sum()}"
 # Display information about the dataset using the info() method
 print(f"Information about the Iris Data Set:")
 print(iris.info())
+
+#visualizing the class distribution of the iris data set into a countplot
+sns.countplot(data=iris, x="Class", saturation= 0.5)
+plt.show()
+
 
 
 
