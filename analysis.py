@@ -38,6 +38,7 @@ print(iris.info())
 
 #visualizing the class distribution of the iris data set into a countplot
 sns.countplot(data=iris, x="Class", saturation= 0.5)
+plt.title("Class Count")
 plt.show()
 
 
