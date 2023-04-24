@@ -1,0 +1,93 @@
+Information about the Iris Data Set:
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 5 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   Sepal_Length (cm)  150 non-null    float64
+ 1   Sepal_Width (cm)   150 non-null    float64
+ 2   Petal_Length (cm)  150 non-null    float64
+ 3   Petal_Width (cm)   150 non-null    float64
+ 4   Class              150 non-null    object 
+dtypes: float64(4), object(1)
+memory usage: 6.0+ KB
+None 
+
+Overview of the Iris Data set:
+
+     Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)           Class
+0                  5.1               3.5                1.4               0.2     Iris-setosa
+1                  4.9               3.0                1.4               0.2     Iris-setosa
+2                  4.7               3.2                1.3               0.2     Iris-setosa
+3                  4.6               3.1                1.5               0.2     Iris-setosa
+4                  5.0               3.6                1.4               0.2     Iris-setosa
+..                 ...               ...                ...               ...             ...
+145                6.7               3.0                5.2               2.3  Iris-virginica
+146                6.3               2.5                5.0               1.9  Iris-virginica
+147                6.5               3.0                5.2               2.0  Iris-virginica
+148                6.2               3.4                5.4               2.3  Iris-virginica
+149                5.9               3.0                5.1               1.8  Iris-virginica
+
+[150 rows x 5 columns] 
+
+The first 10 rows of the Iris Data set:
+    Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)        Class
+0                5.1               3.5                1.4               0.2  Iris-setosa
+1                4.9               3.0                1.4               0.2  Iris-setosa
+2                4.7               3.2                1.3               0.2  Iris-setosa
+3                4.6               3.1                1.5               0.2  Iris-setosa
+4                5.0               3.6                1.4               0.2  Iris-setosa
+5                5.4               3.9                1.7               0.4  Iris-setosa
+6                4.6               3.4                1.4               0.3  Iris-setosa
+7                5.0               3.4                1.5               0.2  Iris-setosa
+8                4.4               2.9                1.4               0.2  Iris-setosa
+9                4.9               3.1                1.5               0.1  Iris-setosa 
+
+The last 10 rows of the Iris data set:
+      Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)           Class
+140                6.7               3.1                5.6               2.4  Iris-virginica
+141                6.9               3.1                5.1               2.3  Iris-virginica
+142                5.8               2.7                5.1               1.9  Iris-virginica
+143                6.8               3.2                5.9               2.3  Iris-virginica
+144                6.7               3.3                5.7               2.5  Iris-virginica
+145                6.7               3.0                5.2               2.3  Iris-virginica
+146                6.3               2.5                5.0               1.9  Iris-virginica
+147                6.5               3.0                5.2               2.0  Iris-virginica
+148                6.2               3.4                5.4               2.3  Iris-virginica
+149                5.9               3.0                5.1               1.8  Iris-virginica 
+
+The Iris plants and their occurances are: 
+
+Iris-setosa        50
+Iris-versicolor    50
+Iris-virginica     50
+Name: Class, dtype: int64 
+
+ The index of the Data Set is:
+ RangeIndex(start=0, stop=150, step=1) 
+
+The Iris Data Set has 2 dimensions
+
+The Iris data set has 150 rows and 5 columns
+
+The number of missing value in the Data set is: 
+ Sepal_Length (cm)    0
+Sepal_Width (cm)     0
+Petal_Length (cm)    0
+Petal_Width (cm)     0
+Class                0
+dtype: int64
+
+The statistical summary of the dataset is: 
+
+       Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)
+count         150.000000        150.000000         150.000000        150.000000
+mean            5.843333          3.054000           3.758667          1.198667
+std             0.828066          0.433594           1.764420          0.763161
+min             4.300000          2.000000           1.000000          0.100000
+25%             5.100000          2.800000           1.600000          0.300000
+50%             5.800000          3.000000           4.350000          1.300000
+75%             6.400000          3.300000           5.100000          1.800000
+max             7.900000          4.400000           6.900000          2.500000
+
