@@ -42,15 +42,15 @@ sys.stdout.close()
 #visualizing the class distribution of the iris data set into a countplot
 sns.countplot(data=iris, x="Class", saturation= 0.5)
 plt.title("Class Count")
-#plt.show()
+plt.savefig("Class-Count.png")
 
 #creating a histogram for all the Iris Data set attributes
 iris.hist(alpha=0.5, bins=25, figsize=(10,6))
 plt.suptitle("Histograms of Iris Dataset Features")
-#plt.savefig("Iris-data-set-histogram")
-#plt.show()
+plt.savefig("Iris-data-set-histogram")
 
-#create a 2x2 histplot to compare the 4 attributes:
+
+#create a 2x2 gris histplot to compare the 4 attributes:
 fig, ax = plt.subplots(2,2, figsize=(10,6))
 sns.histplot(data=iris, x="Sepal_Length (cm)", hue="Class", kde=False, linewidth=0, bins=25, element="step", ax= ax[0,0])
 sns.histplot(data=iris, x="Sepal_Width (cm)", hue="Class", kde=False, linewidth=0,bins=25, element="step", ax= ax[0,1])
@@ -58,21 +58,19 @@ sns.histplot(data=iris, x="Petal_Length (cm)", hue="Class", kde=False, linewidth
 sns.histplot(data=iris, x="Petal_Width (cm)", hue="Class", kde=False, linewidth=0, bins=25, element="step", ax= ax[1,1])
 fig.suptitle("Comparision of Sepal & Petal attributes between the 3 Iris flowers", size=20)
 plt.savefig("histograms-for-comparison-of-the-4-attribute.png")
-#plt.show()
 
-#Create a Scatter plot for for Sepal and Petal Attribute
+#Create a Scatter plot for for Sepal and Petal Attributes:
 plt.figure(figsize=(8,6))
 sns.scatterplot(y=iris["Sepal_Width (cm)"], x=iris["Sepal_Length (cm)"], hue= iris["Class"], s=50)
 plt.title("Comparison of Sepal Sizes Across Iris Species")
-#plt.savefig("Iris-Sepal-attribute-scatterplot.png")
-#plt.show()
+plt.savefig("Iris-Sepal-attribute-scatterplot.png")
 
 plt.figure(figsize=(8,6))
 sns.scatterplot(y=iris["Petal_Width (cm)"], x=iris["Petal_Length (cm)"], hue= iris["Class"], s=50)
 plt.title("Comparison of Petal Sizes Across Iris Species")
-#plt.savefig("Iris-Petal-attribute-scatterplot.png")
-#plt.show()
+plt.savefig("Iris-Petal-attribute-scatterplot.png")
 
+#Creating a Violinplot:
 fig, ax = plt.subplots(2,2, figsize=(16,9))
 font = {"family" : "Lucida Handwriting", "color" : "Blue", "size" : 15}
 sns.violinplot( x= iris["Class"], y= iris["Sepal_Length (cm)"], data= iris,  ax= ax[0,0])
@@ -81,8 +79,8 @@ sns.violinplot( x= iris["Class"], y= iris["Petal_Length (cm)"], data= iris,  ax=
 sns.violinplot( x= iris["Class"], y= iris["Petal_Width (cm)"], data= iris,  ax= ax[1,1])
 fig.suptitle("Violinplot of Iris Sepal & Petal attributes", size=20, fontdict=font)
 plt.savefig("Violinlot-of-Iris-Data-Set.png")
-#plt.show()
 
+#create a pairplot:
 sns.pairplot(iris, hue= "Class")
 plt.savefig("Iris-data-set-pairplot.png")
 plt.show()
