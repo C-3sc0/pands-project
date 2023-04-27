@@ -13,10 +13,14 @@ This repository is used for the final project given during the Programming and s
   * [Importing the data](https://github.com/C-3sc0/pands-project#importing-the-data)
   * [Iris Data Insight Extraction](https://github.com/C-3sc0/pands-project#iris-data-insight-extraction)
 * [Iris Data Visualization](https://github.com/C-3sc0/pands-project#iris-data-visualization)
-  * [libraries and modules]
-
-* [References](https://github.com/C-3sc0/pands-project#references)
-
+* [Exploring Differences in Sepal and Petal Attributes]
+* [libraries and modules]
+  * [Countplot]
+  * [Histogram]
+  * [Scatterplot]
+  * [Pairplot]
+  * [Violinplot]
+  
 ## Fisher's Iris Data set information
 
 ### Fisher's Iris Data set History
@@ -24,7 +28,7 @@ This repository is used for the final project given during the Programming and s
 The *Iris* *flower* *data*, also known as *Fisher's* *Iris* *data* *set* was introduced by British biologist and statistician Sir Ronald Aylmer Fisher in his 1936 article titled "[*The* *Use* *of* *Multiple* *Measurements* *in* *Taxonomic* *Problems*](https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1469-1809.1936.tb02137.x)". It is important to mention that the data used in aforementioned article were not collect directly by Fisher himself but by Dr. Edgar Anderson, who collected it in the Gaspé Peninsula region of Canada.
 The article Fisher formulated and assessed a linear function that distinguishes between Iris species based on the morphology of their flowers.[^1]
 
-Iris flowers can be distinguished in **three** species:*Iris* *Setosa*, *Iris* *Virginica* & *Iris* *Versicolor* as shown in the image below[^2]:
+Iris flowers can be distinguished in **three** species: ```Iris Setosa```, ```Iris Virginica``` & ```Iris Versicolor``` as shown in the image below[^2]:
 
 ![Iris flower spcecies](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Machine+Learning+R/iris-machinelearning.png)
 
@@ -48,14 +52,43 @@ The first 4 attributes are considered quantitative variables, whereas the last o
 
 ### Importing the data
 
-The ``` csv_url ``` is a variable that store the Iris Data set available from the [UC Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Iris) in csv format. Here, ``` pandas ``` has been used to import the data set.
+The ``` csv_url ``` is a variable that store the Iris Data set available from the [UC Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Iris) in csv format. Here, ``` pandas ``` has been used to import the data set. Alternately, the Iris Data set can be downloaded and saved it locally as CSV file. It can then be read the data of the CSV file by by specifying his file path.
 
 ```python
 iris = pd.read_csv(csv_url, names = attribute_names)
 ```
 
-The above line of code is used to read a CSV file containing the Iris flower dataset and store it in a pandas DataFrame object called `iris`. The `pandas` library makes it simple to import tabular data into a DataFrame[^5] object. By reading data into a DataFrame with the `pandas` library, we can rapidly conduct data analysis and manipulation using the pandas library's extensive set of functions and methods.
-Since the csv file at the UCI Machine Learning Repository does not include the variable attributes information in the same file, the ``` name = ``` parameter is used to list the attribute's names.
+The above line of code is used to read a CSV file containing the Iris flower data set and store it in a pandas DataFrame object called `iris`. The `pandas` library makes it simple to import tabular data into a DataFrame[^5] object. By reading data into a DataFrame with the `pandas` library, we can rapidly conduct data analysis and manipulation using the pandas library's extensive set of functions and methods.
+One of the problems with the UCI Machine Learning Repository's data set is that the attribute information is not included in the main file. However, this information can be found in a separate file located in the **[Data set Description](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.names)** section.
+
+<details>
+<summary>Data set Description</summary>
+
+```python
+7. Attribute Information:
+   1. sepal length in cm
+   2. sepal width in cm
+   3. petal length in cm
+   4. petal width in cm
+   5. class: 
+      -- Iris Setosa
+      -- Iris Versicolour
+      -- Iris Virginica
+```
+
+</details>
+
+In order to address this problem, I opted to create a list consisting of the attribute names and store it in a variable called `attribute_names`.  Then, I passed this variable as an argument to the ``` name = ``` parameter in the current script:
+
+<details>
+<summary>Iris attribute's names</summary>
+
+```
+#Define the names of the columns in the dataset
+attribute_names = ['Sepal_Length (cm)','Sepal_Width (cm)','Petal_Length (cm)','Petal_Width (cm)','Class']
+```
+
+</details>
 
 ## Iris Data Insight Extraction
 
@@ -108,17 +141,20 @@ Based on the above information, It is apparent that all the Iris classes show th
 Additional attributes such as, index, ndim, shape, isnull etc., can be taken into consideration to gain a more comprehensive understanding of the iris data set, as showed in the below code:
 
 ```python
-print(f" The index of the Data Set is: ", iris.index)
-print(f"The Iris Data Set has {iris.ndim} dimensions")
-print(f"The Iris data set has {iris.shape[0]} rows and {iris.shape[1]} columns")
-print(f"the number of missing value in the Data set is: \n{iris.isnull().sum()}")
-print(f"Information about the Iris Data Set:")
-print(iris.info())
+print(f" The index of the Data Set is:\n", iris.index, "\n")
+print(f"The Iris Data Set has {iris.ndim} dimensions\n")
+print(f"The Iris data set has {iris.shape[0]} rows and {iris.shape[1]} columns\n")
+print(f"The number of missing value in the Data set is: \n {iris.isnull().sum()}\n")
+print(f"Information about the Iris Data Set:\n")
+print(iris.info(),"\n")
 ```
 
 * The ```index``` attribute indicates the automatically generated index of the Data Frame upon reading the CSV file. in This case the output will be:
 
-```The index of the Data Set is:  RangeIndex(start=0, stop=150, step=1)```
+``` 
+The index of the Data Set is:
+RangeIndex(start=0, stop=150, step=1)
+```
 
 * The `ndim` attirbute shows the number of axes dimension of the Iris Data Set[^6]. The output will be:
 
@@ -167,7 +203,7 @@ Common mathematical and statistical methods are available for pandas objects. Th
 
 ```print(f"Statistical summary of the dataset: \n{iris.describe()}")```
 
-```python
+```
 Statistical summary of the dataset: 
           Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)
 count         150.000000        150.000000         150.000000        150.000000
@@ -195,6 +231,74 @@ Summary statistics for the iris Data Set:
 * The percentiles give an idea about the distribution of the data:
   For example, 50% of the observations have Sepal Length between 5.1 cm and 6.4 cm.
 
+### Exploring Differences in Sepal and Petal Attributes
+
+The Iris dataset can be categorized into three distinct subsets depending on the class assigned to each observation. One way to filter rows from the Iris DataFrame is by using Boolean Indexing, which selects rows that meet certain conditions[^17]. For instance:
+
+<details>
+<summary>subset groups</summary>
+
+```python
+#Create 3 new DataFrame for the Iris Class Attribute for further analysis
+setosa = iris[iris.Class == "Iris-setosa"]
+versicolor = iris[iris.Class == "Iris-versicolor"]
+virginica = iris[iris.Class == "Iris-virginica"]
+```
+
+</details>
+
+The ```.Class``` attribute in the given code signifies the specific column on which the filtering will be applied. Here for example, the expression ```== 'Iris-setosa'``` serves to filter the dataset and extract only those rows where the Class column has the value "Iris-setosa".
+This division can be helpful because it allows us to perform separate analysis on each subset. Since each subset represents a different species of Iris, this division is useful in comparing and contrasting the different attributes of each species. By performing separate analysis on each subset, we can gain a better understanding of the unique characteristics of each species and how they differ from one another.
+The describe method can be used to obtain summary statistics for each class of iris flower in the data set:
+
+<details>
+<summary>input</summary>
+
+```python
+print(f"\nThe summary statistic for Iris Setosa class are:\n {setosa.describe()}")
+print(f"\nThe summary statistic for Iris Versicolor class are:\n {versicolor.describe()}")
+print(f"\nThe summary statistic for Iris Virginica class are:\n {virginica.describe()}\n")
+```
+
+</details>
+
+```
+The summary statistic for Iris Setosa class are:
+        Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)
+count           50.00000         50.000000          50.000000          50.00000
+mean             5.00600          3.418000           1.464000           0.24400
+std              0.35249          0.381024           0.173511           0.10721
+min              4.30000          2.300000           1.000000           0.10000
+25%              4.80000          3.125000           1.400000           0.20000
+50%              5.00000          3.400000           1.500000           0.20000
+75%              5.20000          3.675000           1.575000           0.30000
+max              5.80000          4.400000           1.900000           0.60000
+
+The summary statistic for Iris Versicolor class are:
+        Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)
+count          50.000000         50.000000          50.000000         50.000000
+mean            5.936000          2.770000           4.260000          1.326000
+std             0.516171          0.313798           0.469911          0.197753
+min             4.900000          2.000000           3.000000          1.000000
+25%             5.600000          2.525000           4.000000          1.200000
+50%             5.900000          2.800000           4.350000          1.300000
+75%             6.300000          3.000000           4.600000          1.500000
+max             7.000000          3.400000           5.100000          1.800000
+
+The summary statistic for Iris Virginica class are:
+        Sepal_Length (cm)  Sepal_Width (cm)  Petal_Length (cm)  Petal_Width (cm)
+count           50.00000         50.000000          50.000000          50.00000
+mean             6.58800          2.974000           5.552000           2.02600
+std              0.63588          0.322497           0.551895           0.27465
+min              4.90000          2.200000           4.500000           1.40000
+25%              6.22500          2.800000           5.100000           1.80000
+50%              6.50000          3.000000           5.550000           2.00000
+75%              6.90000          3.175000           5.875000           2.30000
+max              7.90000          3.800000           6.900000           2.50000
+```
+
+The statistical analysis of the Iris dataset at the class level indicates that there are notable differences between the three species, with Iris Setosa showing distinct characteristics compared to Versicolor and Virginica. For instance, the average petal length of Iris Setosa is significantly smaller (1.46 cm) than that of Versicolor (4.26 cm) and Virginica (5.552 cm). Additionally, the petal width of Setosa is considerably smaller than the other two species. Interestingly, Setosa also exhibits smaller sepal length measurements on average, while its sepal width is larger than that of Versicolor and Virginica. This is also reflected in the minimum and maximum measurements of the three species. Overall, the analysis suggests that the differences between Iris Setosa and the other two species are more pronounced than the differences between Versicolor and Virginica.
+
 ### Iris Data Visualization
 
 #### Libraries and Modules
@@ -213,14 +317,16 @@ import seaborn as sns
 
 To analyze the Iris Data set with Python, we need to import several Python libraries, each with its specific purpose:
 
-- ```pandas```: It offers high-performance and user-friendly data analysis tools, specifically designed for working with data in a tabular format.  It enables working with structured data that contains a set of ordered columns, where each column can have a different data type. This makes it highly suitable for analyzing the Iris dataset, which consists of several numerical columns and one categorical column[^17].
-- ```numpy```: It provides support for large, multi-dimensional arrays and matrices of numerical data, which are commonly used in machine learning[^18].
-- ```matplotlib```: It provides support for large, multi-dimensional arrays and matrices of numerical data[^19].
-- ```seaborn```: It is based on matplotlib and provides a high-level interface for creating more complex and informative statistical graphics[^20].
+- ```pandas```: It offers high-performance and user-friendly data analysis tools, specifically designed for working with data in a tabular format.  It enables working with structured data that contains a set of ordered columns, where each column can have a different data type. This makes it highly suitable for analyzing the Iris dataset, which consists of several numerical columns and one categorical column[^18].
+- ```numpy```: It provides support for large, multi-dimensional arrays and matrices of numerical data, which are commonly used in machine learning[^19].
+- ```matplotlib```: It provides support for large, multi-dimensional arrays and matrices of numerical data[^20].
+- ```seaborn```: It is based on matplotlib and provides a high-level interface for creating more complex and informative statistical graphics[^21].
+
+### Countplot
 
 Utilizing plots to visualize the Iris dataset is an effective method to examine the data and obtain valuable understanding regarding the correlations between various features present in the dataset.
 
-By utilizing the ```countplot()``` function, we can obtain a more comprehensive understanding of the parameters of the iris dataset[^21]. 
+By utilizing the ```countplot()``` function, we can obtain a more comprehensive understanding of the parameters of the iris dataset[^22]. 
 
 <details>
 <summary>Class</summary>
@@ -238,54 +344,109 @@ The function generates a countplot that visualizes the distribution of the categ
 
 The countplot provides a visual confirmation of our previous observation that the Iris dataset is well-balanced. This is evident from the plot as it shows an equal count of 50 rows for all three classes.
 
-Next, we will analyze the five attributes of the Iris dataset using histograms. To create a histogram for each numerical column in the DataFrame, we will use the ```.plot.hist()``` method[^22] from the pandas library. This method groups the values of all given Series in the DataFrame into bins and draws all bins in one histogram per column[^23].
+### Histogram
+
+Next, we will analyze the five attributes of the Iris dataset using histograms. To create a histogram for each numerical column in the DataFrame, we will use the ```.plot.hist()``` method[^23] from the pandas library. This method groups the values of all given Series in the DataFrame into bins and draws all bins in one histogram per column[^24].
 
 The resulting histograms will show the distribution of each of the measurement attributes across the Iris dataset.
 
 ![Histogram](https://github.com/C-3sc0/pands-project/blob/main/plots/Iris-data-set-histogram.png?raw=true)
 
-The histograms generated by the ```iris.hist()``` function give a general overview of the distribution of each variable in the iris dataset. However, they do not allow for a more detailed analysis of the distribution of multiple variables in the dataset. In contrast, the **Seaborn's distplot** method provides a more advanced solution for creating histograms of multiple distributions, enabling us to better explore and analyze the dataset. By using ```distplot()```, we can not only visualize the distribution of each variable for different classes of flowers, but also compare the distributions between different classes[^24][^25].
+The histograms generated by the ```iris.hist()``` function give a general overview of the distribution of each variable in the iris dataset. However, they do not allow for a more detailed analysis of the distribution of multiple variables in the dataset. In contrast, the **Seaborn's histplot** method provides a more advanced solution for creating histograms of multiple distributions, enabling us to better explore and analyze the dataset. By using ```histplot()```, we can not only visualize the distribution of each variable for different classes of flowers, but also compare the distributions between different classes[^25][^26].
 
 <details>
-<summary>.distplot()</summary>
+<summary>.histplot()</summary>
 
 ```python
-setosa = iris[iris.Class == "Iris-setosa"]
-versicolor = iris[iris.Class == "Iris-versicolor"]
-virginica = iris[iris.Class == "Iris-virginica"]
-
-plt.figure(figsize=(8,6))
-sns.distplot(setosa["Sepal_Length (cm)"],  kde = False, label = "Iris setosa")
-sns.distplot(versicolor["Sepal_Length (cm)"],  kde = False, label = "Iris versicolor")
-sns.distplot(virginica["Sepal_Length (cm)"],  kde = False, label = "Iris virginica")
-plt.title("Sepal length in cm", size = 12)
-plt.ylabel("Frequency", size = 9)
-plt.legend()
-#plt.savefig("Sepal-Length-distplot.png")
+#create a 2x2 gris histplot to compare the 4 attributes:
+fig, ax = plt.subplots(2,2, figsize=(10,6))
+sns.histplot(data=iris, x="Sepal_Length (cm)", hue="Class", kde=False, linewidth=0, bins=25, element="step", ax= ax[0,0])
+sns.histplot(data=iris, x="Sepal_Width (cm)", hue="Class", kde=False, linewidth=0,bins=25, element="step", ax= ax[0,1])
+sns.histplot(data=iris, x="Petal_Length (cm)", hue="Class", kde=False, linewidth=0,bins=25, element="step", ax= ax[1,0])
+sns.histplot(data=iris, x="Petal_Width (cm)", hue="Class", kde=False, linewidth=0, bins=25, element="step", ax= ax[1,1])
+fig.suptitle("Comparision of Sepal & Petal attributes between the 3 Iris flowers", size=20)
+plt.savefig("histograms-for-comparison-of-the-4-attribute.png")
 plt.show()
 ```
 
 </details>
 
-The above code filters the original Iris dataset by separating it into three new datasets, each containing only the rows corresponding to one of the three species of Iris flowers: Setosa, Versicolor, and Virginica. This is done because we want to compare the distributions of sepal lengths between the three species separately.
-
-![SepalL](https://github.com/C-3sc0/pands-project/blob/main/plots/Sepal-Length-distplot.png?raw=true)
-
-![SepalW](https://github.com/C-3sc0/pands-project/blob/main/plots/Sepal-Width-distplot.png?raw=true)
-
-![PetalL](https://github.com/C-3sc0/pands-project/blob/main/plots/Petal-Length-distplot.png?raw=true)
-
-![PetalW](https://github.com/C-3sc0/pands-project/blob/main/plots/Petal-Width-distplot.png?raw=true)
-
-The above graphs provide us with some valuable insights about the Iris dataset. If, for example, we take into consideraton the Petal attribute, We can observe that there is an overlap between the Petal Length and Width of iris versicolor and virginica, while iris setosa appears to be distinct from the other two species. Interestingly, the distribution of Petal Length for each species is quite different. We can see that setosa has a shape that is closest to a normal distribution, with the highest peak, while the distributions for versicolor and virginica are more spread out. This information can help us distinguish between the three species more accurately[^26].
+![SepalL](https://github.com/C-3sc0/pands-project/blob/main/plots/histograms-for-comparison-of-the-4-attribute.png?raw=true)
 
 
+The above graphs provide us with some valuable insights about the Iris dataset. If, for example, we take into consideraton the Petal attribute, We can observe that there is an overlap between the Petal Length and Width of iris versicolor and virginica, while iris setosa appears to be distinct from the other two species. Interestingly, the distribution of Petal Length for each species is quite different. We can see that setosa has a shape that is closest to a normal distribution, with the highest peak, while the distributions for versicolor and virginica are more spread out. This information can help us distinguish between the three species more accurately[^27]. The sepal histograms show a distinct scenario where there is a notable amount of overlap among all three species for both sepal length and width, as evident from the above graphs[^28].
 
+### Scatterplot
 
+A scatter plot is a type of plot that displays values for two variables as a set of individual points. It is useful for visualizing the relationship between two variables, and can help identify patterns or trends in the data. With the function ```scatterplot()``` the data is plotted along two axes, x & y, with one variable on the x-axis and the other variable on the y-axis. Each point in the plot represents a single observation[^29]:
 
+<details>
+<summary>.scatterplot()</summary>
 
+```python
+sns.scatterplot(y=iris["Sepal_Width (cm)"], x=iris["Sepal_Length (cm)"], hue= iris["Class"], s=50)
+plt.title("Comparison of Sepal Sizes Across Iris Species")
+plt.show()
+```
 
-### References
+</details>
+
+The scatter plots above describe the relationship between Sepal/Petal Lenght (on the x axis) and Sepal/Petal Width (on the y axis). Every data point represents an individual flower and its position is determined by its lenght x width.
+
+![Sepal](https://github.com/C-3sc0/pands-project/blob/main/plots/Iris-Sepal-attribute-scatterplot.png?raw=true)
+
+The initial scatter plot shows that **flowers with longer sepals tend to have narrower widths**, and vice versa. Interestingly, Iris setosa has the smallest sepals but higher width, while Iris versicolor and Iris virginica have similar sizes, but with slightly different shapes for both the length and width.
+
+![Petal](https://github.com/C-3sc0/pands-project/blob/main/plots/Iris-Petal-attribute-scatterplot.png?raw=true)
+
+On the other hand, the second scatter plot presents a different scenario. In this case, **flower classes with longer petals tend to have wider widths**, and vice versa. Each class of iris flower has a unique pattern[^30]:
+
+- Iris Setosa has the smallest petal length and width.
+- Iris Virginica has the largest petal length and width.
+
+### Pairplot
+
+The pairplot is used to explore the pairwise relationships between multiple variables in a dataset. The pairplot function generates a grid of plots where each variable in the dataset is plotted against all the other variables, creating a matrix of scatter plots. The variables are shared on the y-axis across a single row and on the x-axis across a single column. The diagonal of the plot matrix shows the distribution of the variable in that column as a univariate plot[^31]. 
+
+<details>
+<summary>.pairplot()</summary>
+
+```python
+sns.pairplot(iris, hue= "Class")
+plt.show()
+```
+
+</details>
+
+![pairplot](https://github.com/C-3sc0/pands-project/blob/main/plots/Iris-data-set-pairplot.png?raw=true)
+
+By analyzing the pairplot for the iris dataset, we can observe that Sepal/Petal length and width are positively correlated, which means that as sepal/Petal length increases, sepal/petal width also tends to increase. The Setosa class is clearly separated from the other two classes in all scatterplots, indicating that it has distinct characteristics from Versicolor and Virginica. Versicolor and Virginica are more similar to each other, but can still be distinguished by the combination of sepal and petal measurements.
+
+ 
+
+### Violin plot
+
+A violin plot is a graphical representation that allows us to visualize the distribution of one or more numeric variables for different groups. Each "violin" represents a group or a variable, and the shape of the violin represents the density estimate of the variable. The width of the violin at a particular point represents the estimated density of observations in that range. The plot is symmetric, with the density estimate mirrored and flipped to create the image of a violin. This visualization technique is useful for comparing the ranking and distribution of multiple groups. Violin plots can also display the kernel density estimate (KDE) of the data, which provides a smooth estimate of the probability density function. The KDE helps in visualizing the shape of the distribution more accurately[^32].
+
+<details>
+<summary>.violinplot()</summary>
+
+```python
+fig, ax = plt.subplots(2,2, figsize=(16,9))
+font = {"family" : "Lucida Handwriting", "color" : "Blue", "size" : 15}
+sns.violinplot( x= iris["Class"], y= iris["Sepal_Length (cm)"], data= iris,  ax= ax[0,0])
+sns.violinplot( x= iris["Class"], y= iris["Sepal_Width (cm)"], data= iris, ax= ax[0,1])
+sns.violinplot( x= iris["Class"], y= iris["Petal_Length (cm)"], data= iris,  ax= ax[1,0])
+sns.violinplot( x= iris["Class"], y= iris["Petal_Width (cm)"], data= iris,  ax= ax[1,1])
+fig.suptitle("Violinplot of Iris Sepal & Petal attributes", size=20, fontdict=font)
+plt.show()
+```
+
+</details>
+
+![Violinplot](https://github.com/C-3sc0/pands-project/blob/main/plots/Violinlot-of-Iris-Data-Set.png?raw=true)
+
+The above code generates a 2x2 grid of violin plots for the iris dataset, where each plot displays the distribution of the sepal length, sepal width, petal length, and petal width attributes for each of the three iris Class.The width of each violin represents the density of the data points at each value of the attribute, with wider sections indicating more points in that range. The thin horizontal line inside each violin indicates the median value, while the vertical lines extending from the violin show the range of the data. from the ```violinplot()``` we have a better visual of the ditribution of the 3 Iris class: Iris Setosa tends to have the shortest Sepal/Petal lenght and Petal width and the widest Sepal width compared to the other 2 class. Sepal length and width ditributions is similar fo both Iris Versicolor and Virginica. However, based on the violin plots for petal length and width, we can see that Iris Virginica tends to have slightly longer and wider petals compared to Iris Versicolor.
 
 [^1]: [towardsdatascience](https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5) - The Iris Dataset — A Little Bit of History and Biology
 [^2]: http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html
@@ -303,13 +464,19 @@ The above graphs provide us with some valuable insights about the Iris dataset. 
 [^bignote]: It shows the percentage of values falling below that percentile. The first quartile is the value below which 25% of the data fall; the median is the value below whichc 50% of the data fall and the third quartile is the value below which 75% of the data fall.
 [^15]: It shows the Largest value observed in the Data Set for each variable.
 [^16]:[W3schools](https://www.w3schools.com/python/pandas/ref_df_describe.asp)
-[^17]: [Geeksforgeeks](https://www.geeksforgeeks.org/pandas-tutorial/)
-[^18]: [numpy](https://numpy.org/doc/stable/)
-[^19]: [matploylib](https://matplotlib.org/stable/users/explain/api_interfaces.html)
-[^20]: [seaborn](https://seaborn.pydata.org/index.html)
-[^21]:[datagy](https://datagy.io/seaborn-countplot/)
-[^22]: [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.hist.html)
-[^23]: [datacamp](https://www.datacamp.com/tutorial/histograms-matplotlib)
-[^24]: [cmdlinetips](https://cmdlinetips.com/2019/02/how-to-make-histogram-in-python-with-pandas-and-seaborn/)
-[^25]: [Stack Overflow](https://stackoverflow.com/questions/60046243/how-to-make-a-distplot-for-each-column-in-a-pandas-dataframe)
-[^26]: [RPubs](https://rpubs.com/Karolina_G/848706)
+[^17]: [pandas](http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#boolean-index)
+[^18]: [Geeksforgeeks](https://www.geeksforgeeks.org/pandas-tutorial/)
+[^19]: [numpy](https://numpy.org/doc/stable/)
+[^20]: [matploylib](https://matplotlib.org/stable/users/explain/api_interfaces.html)
+[^21]: [seaborn](https://seaborn.pydata.org/index.html)
+[^22]:[datagy](https://datagy.io/seaborn-countplot/)
+[^23]: [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.hist.html)
+[^24]: [datacamp](https://www.datacamp.com/tutorial/histograms-matplotlib)
+[^25]: [Seaborn](https://seaborn.pydata.org/generated/seaborn.histplot.html)
+[^26]: [Ummesalmam.com](https://ummesalmam.com/python-for-you/fundamentals-of-python/visualization-in-python-iris-dataset/)
+[^27]: [RPubs](https://rpubs.com/Karolina_G/848706)
+[^28]: [Medium.com](https://medium.com/analytics-vidhya/exploratory-data-analysis-iris-dataset-4df6f045cda#:~:text=Data%20Insights%3A,-The%20pdf%20curve&text=If%20petal%20length%20%3C%202.1%2C%20then,then%20species%20is%20Iris%20Virginica)
+[^29]: [Seaborn](https://seaborn.pydata.org/tutorial/relational.html#relational-tutorial)
+[^30]: [Medium.com](https://levelup.gitconnected.com/unveiling-the-mysteries-of-the-iris-dataset-a-comprehensive-analysis-and-machine-learning-f5c4f9dbcd6d)
+[^31]: [Seaborn](https://seaborn.pydata.org/generated/seaborn.pairplot.html)
+[^32]: [Chartio](https://chartio.com/learn/charts/violin-plot-complete-guide/#:~:text=A%20violin%20plot%20depicts%20distributions,plot%2C%20to%20provide%20additional%20information.)
