@@ -12,14 +12,14 @@ This repository is used for the final project given during the Programming and s
   * [Data Dimension](https://github.com/C-3sc0/pands-project#data-dimension)
   * [Importing the data](https://github.com/C-3sc0/pands-project#importing-the-data)
   * [Iris Data Insight Extraction](https://github.com/C-3sc0/pands-project#iris-data-insight-extraction)
+* [Exploring Differences in Sepal and Petal Attributes](https://github.com/C-3sc0/pands-project#exploring-differences-in-sepal-and-petal-attributes)
 * [Iris Data Visualization](https://github.com/C-3sc0/pands-project#iris-data-visualization)
-* [Exploring Differences in Sepal and Petal Attributes]
-* [libraries and modules]
-  * [Countplot]
-  * [Histogram]
-  * [Scatterplot]
-  * [Pairplot]
-  * [Violinplot]
+* [libraries and modules](https://github.com/C-3sc0/pands-project#libraries-and-modules)
+  * [Countplot](https://github.com/C-3sc0/pands-project#countplot)
+  * [Histogram](https://github.com/C-3sc0/pands-project#histogram)
+  * [Scatterplot](https://github.com/C-3sc0/pands-project#scatterplot)
+  * [Pairplot](https://github.com/C-3sc0/pands-project#pairplot)
+  * [Violinplot](https://github.com/C-3sc0/pands-project#violin-plot)
   
 ## Fisher's Iris Data set information
 
@@ -448,35 +448,35 @@ plt.show()
 
 The above code generates a 2x2 grid of violin plots for the iris dataset, where each plot displays the distribution of the sepal length, sepal width, petal length, and petal width attributes for each of the three iris Class.The width of each violin represents the density of the data points at each value of the attribute, with wider sections indicating more points in that range. The thin horizontal line inside each violin indicates the median value, while the vertical lines extending from the violin show the range of the data. from the ```violinplot()``` we have a better visual of the ditribution of the 3 Iris class: Iris Setosa tends to have the shortest Sepal/Petal lenght and Petal width and the widest Sepal width compared to the other 2 class. Sepal length and width ditributions is similar fo both Iris Versicolor and Virginica. However, based on the violin plots for petal length and width, we can see that Iris Virginica tends to have slightly longer and wider petals compared to Iris Versicolor.
 
-[^1]: [towardsdatascience](https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5) - The Iris Dataset — A Little Bit of History and Biology
-[^2]: http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html
-[^3]: [angela1c.com](https://www.angela1c.com/projects/iris_project/the-iris-dataset/) - About Fisher’s Iris dataset
-[^4]:[rstudio-pubs-static.s3](https://rstudio-pubs-static.s3.amazonaws.com/568691_afb34f2ab2ad4734b63064a2dcf25931.html#Data%20Dimension)
+[^1]: The Iris Dataset — A Little Bit of History and Biology [towardsdatascience](https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5)
+[^2]: Data Science Example - Iris dataset - [lac.inpe.br](http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html)
+[^3]: About Fisher’s Iris dataset - [angela1c.com](https://www.angela1c.com/projects/iris_project/the-iris-dataset/)
+[^4]:INDEX - [rstudio-pubs-static.s3](https://rstudio-pubs-static.s3.amazonaws.com/568691_afb34f2ab2ad4734b63064a2dcf25931.html#Data%20Dimension)
 [^5]: In Python, a DataFrame object is a two-dimensional table-like data format supplied by the pandas module. It is made up of rows and columns, with each column containing various types of data (e.g., number, float, string), and each row representing a record or observation - [geeksforgeeks](https://www.geeksforgeeks.org/python-pandas-dataframe/).
-[^6]:[StackOverflow](https://stackoverflow.com/questions/8376218/what-do-we-mean-by-dimension-when-talking-about-arrays)
-[^7]: [StackOverflow](https://stackoverflow.com/questions/65949568/what-does-rangey-shape1-mean-in-for-i-in-rangedataset2-shape1#:~:text=shape%5B0%5D%20will%20give%20you,columns%20present%20in%20the%20dataFrame.)
-[^8]: [note.nkmk](https://note.nkmk.me/en/python-pandas-nan-judge-count/)
-[^9]: [geeksforgeeks](https://www.geeksforgeeks.org/python-pandas-dataframe-info/)
+[^6]:What do we mean by "dimension" when talking about arrays?" - [StackOverflow](https://stackoverflow.com/questions/8376218/what-do-we-mean-by-dimension-when-talking-about-arrays)
+[^7]: What does 'range(y.shape[1])' mean in "for i in range(dataset2.shape[1]):"? - [StackOverflow](https://stackoverflow.com/questions/65949568/what-does-rangey-shape1-mean-in-for-i-in-rangedataset2-shape1#:~:text=shape%5B0%5D%20will%20give%20you,columns%20present%20in%20the%20dataFrame.)
+[^8]: pandas: Detect and count missing values (NaN) with isnull(), isna() - [note.nkmk](https://note.nkmk.me/en/python-pandas-nan-judge-count/)
+[^9]: Python | Pandas dataframe info() - [geeksforgeeks](https://www.geeksforgeeks.org/python-pandas-dataframe-info/)
 [^10]: The number of non-empty values in the Data Set
 [^11]: It shows the mean or average values of the coumn
 [^12]: It shows the Standard Deviation of the column
 [^13]: It shows the smallest value observed in the Data Set for each variable.
 [^bignote]: It shows the percentage of values falling below that percentile. The first quartile is the value below which 25% of the data fall; the median is the value below whichc 50% of the data fall and the third quartile is the value below which 75% of the data fall.
 [^15]: It shows the Largest value observed in the Data Set for each variable.
-[^16]:[W3schools](https://www.w3schools.com/python/pandas/ref_df_describe.asp)
-[^17]: [pandas](http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#boolean-index)
-[^18]: [Geeksforgeeks](https://www.geeksforgeeks.org/pandas-tutorial/)
-[^19]: [numpy](https://numpy.org/doc/stable/)
-[^20]: [matploylib](https://matplotlib.org/stable/users/explain/api_interfaces.html)
-[^21]: [seaborn](https://seaborn.pydata.org/index.html)
-[^22]:[datagy](https://datagy.io/seaborn-countplot/)
-[^23]: [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.hist.html)
-[^24]: [datacamp](https://www.datacamp.com/tutorial/histograms-matplotlib)
-[^25]: [Seaborn](https://seaborn.pydata.org/generated/seaborn.histplot.html)
-[^26]: [Ummesalmam.com](https://ummesalmam.com/python-for-you/fundamentals-of-python/visualization-in-python-iris-dataset/)
-[^27]: [RPubs](https://rpubs.com/Karolina_G/848706)
-[^28]: [Medium.com](https://medium.com/analytics-vidhya/exploratory-data-analysis-iris-dataset-4df6f045cda#:~:text=Data%20Insights%3A,-The%20pdf%20curve&text=If%20petal%20length%20%3C%202.1%2C%20then,then%20species%20is%20Iris%20Virginica)
-[^29]: [Seaborn](https://seaborn.pydata.org/tutorial/relational.html#relational-tutorial)
-[^30]: [Medium.com](https://levelup.gitconnected.com/unveiling-the-mysteries-of-the-iris-dataset-a-comprehensive-analysis-and-machine-learning-f5c4f9dbcd6d)
-[^31]: [Seaborn](https://seaborn.pydata.org/generated/seaborn.pairplot.html)
-[^32]: [Chartio](https://chartio.com/learn/charts/violin-plot-complete-guide/#:~:text=A%20violin%20plot%20depicts%20distributions,plot%2C%20to%20provide%20additional%20information.)
+[^16]:Pandas DataFrame describe() Method - [W3schools](https://www.w3schools.com/python/pandas/ref_df_describe.asp)
+[^17]: Indexing and selecting data - [pandas](http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#boolean-index)
+[^18]: Pandas Tutorial - [Geeksforgeeks](https://www.geeksforgeeks.org/pandas-tutorial/)
+[^19]: NumPy documentation - [numpy](https://numpy.org/doc/stable/)
+[^20]:Matplotlib Application Interfaces (APIs) - [matploylib](https://matplotlib.org/stable/users/explain/api_interfaces.html)
+[^21]:seaborn: statistical data visualization - [seaborn](https://seaborn.pydata.org/index.html)
+[^22]: Seaborn Countplot – Counting Categorical Data in Python - [datagy](https://datagy.io/seaborn-countplot/)
+[^23]: pandas.DataFrame.plot.hist - [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.hist.html)
+[^24]: Histograms in Matplotlib - [datacamp](https://www.datacamp.com/tutorial/histograms-matplotlib)
+[^25]: seaborn.histplot - [Seaborn](https://seaborn.pydata.org/generated/seaborn.histplot.html)
+[^26]: Data Visualization in Python – Iris dataset - [Ummesalmam.com](https://ummesalmam.com/python-for-you/fundamentals-of-python/visualization-in-python-iris-dataset/)
+[^27]: Iris data analysis - [RPubs](https://rpubs.com/Karolina_G/848706)
+[^28]: Exploratory Data Analysis : Iris Dataset - [Medium.com](https://medium.com/analytics-vidhya/exploratory-data-analysis-iris-dataset-4df6f045cda#:~:text=Data%20Insights%3A,-The%20pdf%20curve&text=If%20petal%20length%20%3C%202.1%2C%20then,then%20species%20is%20Iris%20Virginica)
+[^29]: Visualizing statistical relationships - [Seaborn](https://seaborn.pydata.org/tutorial/relational.html#relational-tutorial)
+[^30]: Unveiling the mysteries of the Iris dataset: A comprehensive analysis and Machine Learning Classification - [Medium.com](https://levelup.gitconnected.com/unveiling-the-mysteries-of-the-iris-dataset-a-comprehensive-analysis-and-machine-learning-f5c4f9dbcd6d)
+[^31]: seaborn.pairplot - [Seaborn](https://seaborn.pydata.org/generated/seaborn.pairplot.html)
+[^32]: A Complete Guide to Violin Plots - [Chartio](https://chartio.com/learn/charts/violin-plot-complete-guide/#:~:text=A%20violin%20plot%20depicts%20distributions,plot%2C%20to%20provide%20additional%20information.)
