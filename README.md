@@ -20,6 +20,7 @@ This repository is used for the final project given during the Programming and s
   * [Scatterplot](https://github.com/C-3sc0/pands-project#scatterplot)
   * [Pairplot](https://github.com/C-3sc0/pands-project#pairplot)
   * [Violinplot](https://github.com/C-3sc0/pands-project#violin-plot)
+* [Conclusion](https://github.com/C-3sc0/pands-project#conclusion)
   
 ## Fisher's Iris Data set information
 
@@ -447,6 +448,11 @@ plt.show()
 ![Violinplot](https://github.com/C-3sc0/pands-project/blob/main/plots/Violinlot-of-Iris-Data-Set.png?raw=true)
 
 The above code generates a 2x2 grid of violin plots for the iris dataset, where each plot displays the distribution of the sepal length, sepal width, petal length, and petal width attributes for each of the three iris Class.The width of each violin represents the density of the data points at each value of the attribute, with wider sections indicating more points in that range. The thin horizontal line inside each violin indicates the median value, while the vertical lines extending from the violin show the range of the data. from the ```violinplot()``` we have a better visual of the ditribution of the 3 Iris class: Iris Setosa tends to have the shortest Sepal/Petal lenght and Petal width and the widest Sepal width compared to the other 2 class. Sepal length and width ditributions is similar fo both Iris Versicolor and Virginica. However, based on the violin plots for petal length and width, we can see that Iris Virginica tends to have slightly longer and wider petals compared to Iris Versicolor.
+
+### Conclusion
+
+In conclusion, this project provides valuable insights into the statistical properties of the Iris dataset, which is widely used in machine learning. Through visualizations, we can observe clear differences between the Iris Setosa and the other two species in terms of their petal measurements, while the sepal measurements do not show such a significant difference. The pairwise scatter plots also reveal that it is not straightforward to separate the other two classes from each other as there is overlap. Moreover, the standard deviations highlight that the petal measurements of the Iris Setosa are less variable than the other two species.
+Overall, these findings demonstrate the importance of visualizing data to gain a better understanding of the dataset, which can be used for further analysis and model development.
 
 [^1]: The Iris Dataset — A Little Bit of History and Biology [towardsdatascience](https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5)
 [^2]: Data Science Example - Iris dataset - [lac.inpe.br](http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html)
