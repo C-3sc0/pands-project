@@ -1,7 +1,7 @@
 # pands-project
 
 -------
-This repository is used for the final project given during the Programming and scripting module on Higher Diploma in Data Analytics course from ATU university. Topic of the project is research and investigation of Fisher's Iris data set.
+This repository serves as a resource for the final project for the ATU university's HDip in Computing in Data Analytics course's Programming and Scripting module. The project's primary objective focuses on the study and examination of the Fisher's Iris Data set.
 
 ## Table of Contents
 
@@ -451,8 +451,7 @@ The above code generates a 2x2 grid of violin plots for the iris dataset, where 
 
 ### Conclusion
 
-In conclusion, this project provides valuable insights into the statistical properties of the Iris dataset, which is widely used in machine learning. Through visualizations, we can observe clear differences between the Iris Setosa and the other two species in terms of their petal measurements, while the sepal measurements do not show such a significant difference. The pairwise scatter plots also reveal that it is not straightforward to separate the other two classes from each other as there is overlap. Moreover, the standard deviations highlight that the petal measurements of the Iris Setosa are less variable than the other two species.
-Overall, these findings demonstrate the importance of visualizing data to gain a better understanding of the dataset, which can be used for further analysis and model development.
+In conclusion, this project has demonstrated the importance of visualizing and understanding data in order to gain insights and make informed decisions. The Iris dataset is a classic example of a dataset that has been used extensively in the field of machine learning and is still relevant today. Through the pairwise grid of scatter plots, it is clear that the Iris Setosa stands out as being different from the other two species. Additionally, the standard deviations and averages of petal and sepal measurements also highlight the differences between the Iris Setosa and the other two species. These findings can be useful in further analysis and modeling of the dataset, and provide a foundation for future research in the field of machine learning.
 
 [^1]: The Iris Dataset — A Little Bit of History and Biology [towardsdatascience](https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5)
 [^2]: Data Science Example - Iris dataset - [lac.inpe.br](http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html)
