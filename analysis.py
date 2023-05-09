@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,8 +15,8 @@ def read_data(csv_url, attribute_names):
 
 
 
-#directing print output to a txt file:https://stackoverflow.com/questions/36571560/directing-print-output-to-a-txt-file
 def text_file(iris):
+        
     #directing print output to a txt file:https://stackoverflow.com/questions/36571560/directing-print-output-to-a-txt-file
     sys.stdout = open ("Analysis-summary.txt", "w")
     print(f"Information about the Iris Data Set:\n")
@@ -98,17 +97,20 @@ def pair_plot(iris):
     plt.savefig("Iris-data-set-pairplot.png")
     plt.show()
 
-#Read in the dataset from the UCI Machine Learning Repository link
-csv_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
-#Define the names of the columns in the dataset
-attribute_names = ['Sepal_Length (cm)', 'Sepal_Width (cm)', 'Petal_Length (cm)', 'Petal_Width (cm)', 'Class']
-iris, setosa, versicolor, virginica = read_data(csv_url, attribute_names)
+def iris_analysis():
+    text_file(iris)
+    plot_class_distribution(iris)
+    plot_histograms(iris)
+    plot_histplot(iris)
+    sepal_scatter(iris)
+    petal_scatter(iris)
+    violin_plot(iris)
+    pair_plot(iris)
 
-text_file(iris)
-plot_class_distribution(iris)
-plot_histograms(iris)
-plot_histplot(iris)
-sepal_scatter(iris)
-petal_scatter(iris)
-violin_plot(iris)
-pair_plot(iris)
+if __name__ == "__main__":    
+    #Read in the dataset from the UCI Machine Learning Repository link
+    csv_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+    #Define the names of the columns in the dataset
+    attribute_names = ['Sepal_Length (cm)', 'Sepal_Width (cm)', 'Petal_Length (cm)', 'Petal_Width (cm)', 'Class']
+    iris, setosa, versicolor, virginica = read_data(csv_url, attribute_names)
+    iris_analysis()
